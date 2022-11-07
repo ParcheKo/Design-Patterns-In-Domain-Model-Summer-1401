@@ -5,12 +5,14 @@ namespace Sales
 {
     public class SalesGroup : SalesUnit
     {
-        public List<SalesUnit> Units { get; private set; }
-        public SalesGroup(List<SalesUnit> units)
+        public SalesGroup(string name)
         {
-            Units = units;
+            Name = name;
         }
-        public SalesGroup(params SalesUnit[] units) : this(units?.ToList()) { }
+
+        public string Name { get; private set; }
+
+        public List<SalesUnit> Units { get; private set; } = new List<SalesUnit>();
         public override void PayCommission(int amount)
         {
             var eachShare = amount / Units.Count;
